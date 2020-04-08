@@ -1130,7 +1130,7 @@ static void json_next_number_token(json_parse_t *json, json_token_t *token)
     // pessimistic in that some floating point values that consume
     // 17 characters may be represented without conversion loss.
     if ( json->cfg->decode_big_numbers_as_strings &&
-         ( endptr - json->ptr > 16 ||
+         ( endptr - json->ptr >= 14 ||
            fabs(token->value.number) > 9007199254740991.0 ) )
     {
         token->type = T_STRING;
